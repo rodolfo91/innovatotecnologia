@@ -149,8 +149,8 @@ const ContatoPage = () => {
                   <div>
                     <h3 className="font-bold text-gray-800">Endereço</h3>
                     <p className="text-gray-600">
-                      Av. Tecnologia, 1000<br />
-                      São Paulo, SP - CEP 01234-567
+                      Rua Rio Grande do Norte, S/N<br />
+                      V. Grande, MT - CEP 78135-902
                     </p>
                   </div>
                 </div>
@@ -161,7 +161,7 @@ const ContatoPage = () => {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-800">Telefone</h3>
-                    <p className="text-gray-600">(11) 5555-5555</p>
+                    <p className="text-gray-600">(65) 99341-9023 </p>
                   </div>
                 </div>
 
@@ -171,7 +171,7 @@ const ContatoPage = () => {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-800">E-mail</h3>
-                    <p className="text-gray-600">contato@innovato.com.br</p>
+                    <p className="text-gray-600">contato@innovatotecnologia.com.br</p>
                   </div>
                 </div>
               </div>
@@ -189,7 +189,7 @@ const ContatoPage = () => {
                     <Facebook size={20} />
                   </a>
                   <a
-                    href="https://instagram.com"
+                    href="https://instagram.com/innovato.consultoria"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-blue-medium hover:bg-blue-light p-3 rounded-full transition-colors text-white"
@@ -212,7 +212,7 @@ const ContatoPage = () => {
 
             <div className="bg-white rounded-lg shadow-md overflow-hidden h-80">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1061183326366!2d-46.65333699999999!3d-23.563200299999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1660922624446!5m2!1spt-BR!2sbr"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d310.14800256421125!2d-56.14298982595001!3d-15.658587848404489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x939dadba16129d41%3A0x3a879dcaba54f838!2sR.%20Maranh%C3%A3o%2C%20650%20-%20Frutal%20de%20Minas%2C%20V%C3%A1rzea%20Grande%20-%20MT%2C%2078135-602!5e1!3m2!1spt-BR!2sbr!4v1746501917535!5m2!1spt-BR!2sbr"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
