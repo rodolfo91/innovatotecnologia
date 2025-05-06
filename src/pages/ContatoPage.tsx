@@ -212,7 +212,7 @@ const ContatoPage = () => {
 
             <div className="bg-white rounded-lg shadow-md overflow-hidden h-80">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d310.14800256421125!2d-56.14298982595001!3d-15.658587848404489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x939dadba16129d41%3A0x3a879dcaba54f838!2sR.%20Maranh%C3%A3o%2C%20650%20-%20Frutal%20de%20Minas%2C%20V%C3%A1rzea%20Grande%20-%20MT%2C%2078135-602!5e1!3m2!1spt-BR!2sbr!4v1746501917535!5m2!1spt-BR!2sbr"
+                src="<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d309.1804218156982!2d-56.1429898!3d-15.6585878!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x939dadba16129d41%3A0x3a879dcaba54f838!2sR.%20Maranh%C3%A3o%2C%20650%20-%20Frutal%20de%20Minas%2C%20V%C3%A1rzea%20Grande%20-%20MT%2C%2078135-602!5e1!3m2!1spt-BR!2sbr!4v1746508985983!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
