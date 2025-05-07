@@ -1,6 +1,5 @@
 import React from 'react';
 import { FormData } from './DiagnosticoForm';
-import SectorRating from './SectorRating';
 
 interface FormStep2Props {
   formData: FormData;
@@ -10,98 +9,47 @@ interface FormStep2Props {
 }
 
 interface Question {
-  id: number;
-  text: string;
+  key: keyof Pick<FormData, 'estrategia' | 'operacoes' | 'financas' | 'marketing' | 'rh' | 'tecnologia'>;
+  title: string;
+  question: string;
 }
 
-interface SectorQuestions {
-  [key: string]: {
-    title: string;
-    questions: Question[];
-  };
-}
-
-const sectorQuestions: SectorQuestions = {
-  estrategia: {
+const questions: Question[] = [
+  {
+    key: 'estrategia',
     title: 'Estratégia',
-    questions: [
-      { id: 1, text: 'A empresa possui uma visão clara e objetivos de longo prazo definidos?' },
-      { id: 2, text: 'Existe um planejamento estratégico formal e documentado?' },
-      { id: 3, text: 'A empresa monitora regularmente o mercado e a concorrência?' },
-      { id: 4, text: 'Os objetivos estratégicos são comunicados a todos os colaboradores?' },
-      { id: 5, text: 'Existem indicadores para acompanhar o desempenho dos objetivos estratégicos?' },
-      { id: 6, text: 'A empresa revisa e atualiza sua estratégia periodicamente?' },
-    ],
+    question: 'A empresa possui uma visão clara e objetivos estratégicos bem definidos?',
   },
-  operacoes: {
+  {
+    key: 'operacoes',
     title: 'Operações',
-    questions: [
-      { id: 1, text: 'Os processos operacionais são documentados e padronizados?' },
-      { id: 2, text: 'A empresa possui indicadores de desempenho operacional?' },
-      { id: 3, text: 'A empresa utiliza metodologias de melhoria contínua?' },
-      { id: 4, text: 'A infraestrutura é adequada às necessidades operacionais?' },
-      { id: 5, text: 'A empresa possui planos de contingência para interrupções operacionais?' },
-      { id: 6, text: 'Existe um sistema para gestão da qualidade implementado?' },
-    ],
+    question: 'Os processos operacionais são eficientes e bem documentados?',
   },
-  financas: {
+  {
+    key: 'financas',
     title: 'Finanças',
-    questions: [
-      { id: 1, text: 'A empresa possui controles financeiros efetivos?' },
-      { id: 2, text: 'Existe um processo formal de orçamento e planejamento financeiro?' },
-      { id: 3, text: 'A empresa monitora sua lucratividade por produto/serviço?' },
-      { id: 4, text: 'A gestão de fluxo de caixa é realizada de forma eficiente?' },
-      { id: 5, text: 'A empresa utiliza indicadores financeiros para tomada de decisão?' },
-      { id: 6, text: 'Existe um processo estruturado para análise de investimentos?' },
-    ],
+    question: 'A empresa possui controles financeiros efetivos e gestão adequada do fluxo de caixa?',
   },
-  marketing: {
+  {
+    key: 'marketing',
     title: 'Marketing & Vendas',
-    questions: [
-      { id: 1, text: 'A empresa possui uma estratégia de marketing definida?' },
-      { id: 2, text: 'Existe um processo estruturado de gestão de vendas?' },
-      { id: 3, text: 'A empresa monitora a satisfação dos clientes regularmente?' },
-      { id: 4, text: 'O posicionamento de marca é claro e consistente?' },
-      { id: 5, text: 'A empresa utiliza marketing digital de forma efetiva?' },
-      { id: 6, text: 'Existe uma estratégia definida para gestão do relacionamento com clientes?' },
-    ],
+    question: 'As estratégias de marketing e vendas são eficazes e geram resultados consistentes?',
   },
-  rh: {
+  {
+    key: 'rh',
     title: 'People/RH',
-    questions: [
-      { id: 1, text: 'A empresa possui processos estruturados de recrutamento e seleção?' },
-      { id: 2, text: 'Existe um plano de desenvolvimento para os colaboradores?' },
-      { id: 3, text: 'A empresa realiza avaliações de desempenho periodicamente?' },
-      { id: 4, text: 'O clima organizacional é monitorado regularmente?' },
-      { id: 5, text: 'Existe uma política de remuneração e benefícios estruturada?' },
-      { id: 6, text: 'A cultura organizacional é claramente definida e comunicada?' },
-    ],
+    question: 'A gestão de pessoas é estruturada e promove o desenvolvimento dos colaboradores?',
   },
-  tecnologia: {
+  {
+    key: 'tecnologia',
     title: 'Tecnologia',
-    questions: [
-      { id: 1, text: 'A infraestrutura tecnológica atende às necessidades do negócio?' },
-      { id: 2, text: 'A empresa possui uma estratégia digital definida?' },
-      { id: 3, text: 'Os sistemas de informação são integrados e eficientes?' },
-      { id: 4, text: 'Existe uma política de segurança da informação implementada?' },
-      { id: 5, text: 'A empresa investe regularmente em inovação tecnológica?' },
-      { id: 6, text: 'A tecnologia é utilizada para gerar vantagem competitiva?' },
-    ],
+    question: 'A infraestrutura tecnológica atende às necessidades do negócio e está atualizada?',
   },
-};
+];
 
 const FormStep2: React.FC<FormStep2Props> = ({ formData, updateFormData, onNext, onPrevious }) => {
-  const handleRatingChange = (sector: string, questionIndex: number, rating: number) => {
-    const newRatings = [...formData[sector as keyof typeof formData] as number[]];
-    newRatings[questionIndex] = rating;
-    
-    updateFormData({
-      [sector]: newRatings,
-    });
-  };
-
-  const calculateAverageRating = (ratings: number[]) => {
-    return ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length;
+  const handleRatingChange = (sector: keyof FormData, rating: number) => {
+    updateFormData({ [sector]: rating });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -115,23 +63,46 @@ const FormStep2: React.FC<FormStep2Props> = ({ formData, updateFormData, onNext,
         Etapa 2 - Avaliação por Setor
       </h2>
       <p className="text-gray-600 mb-8">
-        Avalie cada área da sua empresa em uma escala de 1 a 5, onde 1 representa "Discordo Totalmente" e 5 representa "Concordo Totalmente".
+        Avalie cada área da sua empresa em uma escala de 1 a 5, onde:
+        1 = Precisa melhorar muito
+        5 = Excelente
       </p>
 
-      <div className="space-y-12">
-        {Object.entries(sectorQuestions).map(([sectorKey, sector]) => (
-          <SectorRating
-            key={sectorKey}
-            title={sector.title}
-            questions={sector.questions}
-            ratings={formData[sectorKey as keyof typeof formData] as number[]}
-            onRatingChange={(questionIndex, rating) =>
-              handleRatingChange(sectorKey, questionIndex, rating)
-            }
-            averageRating={calculateAverageRating(
-              formData[sectorKey as keyof typeof formData] as number[]
-            )}
-          />
+      <div className="space-y-8">
+        {questions.map((q) => (
+          <div key={q.key} className="bg-gray-50 rounded-lg p-6">
+            <h3 className="text-xl font-bold text-blue-dark mb-4">{q.title}</h3>
+            <p className="text-gray-700 mb-4">{q.question}</p>
+            
+            <div className="grid grid-cols-5 gap-2">
+              {[1, 2, 3, 4, 5].map((rating) => (
+                <label key={rating} className="relative flex flex-col items-center">
+                  <input
+                    type="radio"
+                    name={q.key}
+                    value={rating}
+                    checked={formData[q.key] === rating}
+                    onChange={() => handleRatingChange(q.key, rating)}
+                    className="sr-only"
+                  />
+                  <div
+                    className={`w-full h-10 rounded cursor-pointer transition-colors ${
+                      formData[q.key] === rating
+                        ? 'bg-blue-medium'
+                        : 'bg-gray-200 hover:bg-gray-300'
+                    }`}
+                  ></div>
+                  <span className="text-xs mt-1 text-center">
+                    {rating === 1 && 'Precisa melhorar muito'}
+                    {rating === 2 && 'Precisa melhorar'}
+                    {rating === 3 && 'Regular'}
+                    {rating === 4 && 'Bom'}
+                    {rating === 5 && 'Excelente'}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
 

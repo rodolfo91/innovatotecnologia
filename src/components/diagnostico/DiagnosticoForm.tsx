@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import FormStep1 from './FormStep1';
 import FormStep2 from './FormStep2';
 import FormStep3 from './FormStep3';
+import { supabase } from '../../lib/supabase';
 
 interface DiagnosticoFormProps {
   onSubmit: () => void;
@@ -13,73 +14,27 @@ export interface FormData {
   telefone: string;
   responsavel: string;
   // Step 2
-  estrategia: number[];
-  operacoes: number[];
-  financas: number[];
-  marketing: number[];
-  rh: number[];
-  tecnologia: number[];
+  estrategia: number;
+  operacoes: number;
+  financas: number;
+  marketing: number;
+  rh: number;
+  tecnologia: number;
   // Step 3
-  pontosFortes: {
-    estrategia: string;
-    operacoes: string;
-    financas: string;
-    marketing: string;
-    rh: string;
-    tecnologia: string;
-  };
-  pontosFracos: {
-    estrategia: string;
-    operacoes: string;
-    financas: string;
-    marketing: string;
-    rh: string;
-    tecnologia: string;
-  };
-  planoAcao: {
-    estrategia: string;
-    operacoes: string;
-    financas: string;
-    marketing: string;
-    rh: string;
-    tecnologia: string;
-  };
+  observacao: string;
 }
 
 const initialFormData: FormData = {
   empresa: '',
   telefone: '',
   responsavel: '',
-  estrategia: Array(6).fill(3),
-  operacoes: Array(6).fill(3),
-  financas: Array(6).fill(3),
-  marketing: Array(6).fill(3),
-  rh: Array(6).fill(3),
-  tecnologia: Array(6).fill(3),
-  pontosFortes: {
-    estrategia: '',
-    operacoes: '',
-    financas: '',
-    marketing: '',
-    rh: '',
-    tecnologia: '',
-  },
-  pontosFracos: {
-    estrategia: '',
-    operacoes: '',
-    financas: '',
-    marketing: '',
-    rh: '',
-    tecnologia: '',
-  },
-  planoAcao: {
-    estrategia: '',
-    operacoes: '',
-    financas: '',
-    marketing: '',
-    rh: '',
-    tecnologia: '',
-  },
+  estrategia: 3,
+  operacoes: 3,
+  financas: 3,
+  marketing: 3,
+  rh: 3,
+  tecnologia: 3,
+  observacao: '',
 };
 
 const DiagnosticoForm: React.FC<DiagnosticoFormProps> = ({ onSubmit }) => {
@@ -96,9 +51,53 @@ const DiagnosticoForm: React.FC<DiagnosticoFormProps> = ({ onSubmit }) => {
     window.scrollTo(0, 0);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit();
+    
+    try {
+      const mediaGeral = (
+        formData.estrategia +
+        formData.operacoes +
+        formData.financas +
+        formData.marketing +
+        formData.rh +
+        formData.tecnologia
+      ) / 6;
+
+      // Save diagnostic data
+      const { error: diagnosticoError } = await supabase
+        .from('diagnostico')
+        .insert({
+          estrategia: formData.estrategia,
+          operacoes: formData.operacoes,
+          financas: formData.financas,
+          marketing: formData.marketing,
+          rh: formData.rh,
+          tecnologia: formData.tecnologia,
+          media_geral: mediaGeral,
+          observacao: formData.observacao,
+        });
+
+      if (diagnosticoError) throw diagnosticoError;
+
+      // Save contact information
+      const { error: contatoError } = await supabase
+        .from('contatos')
+        .insert({
+          nome: formData.responsavel,
+          email: '', // Since we're not collecting email in this form
+          telefone: formData.telefone,
+          mensagem: `Empresa: ${formData.empresa}`,
+          origem: 'diagnostico'
+        });
+
+      if (contatoError) throw contatoError;
+
+      onSubmit();
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
+    }
   };
 
   const updateFormData = (data: Partial<FormData>) => {
@@ -165,7 +164,7 @@ const DiagnosticoForm: React.FC<DiagnosticoFormProps> = ({ onSubmit }) => {
           >
             3
           </div>
-          <span className="text-xs md:text-sm hidden md:block">Diagnóstico Detalhado</span>
+          <span className="text-xs md:text-sm hidden md:block">Observações</span>
         </div>
       </div>
       

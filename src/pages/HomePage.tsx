@@ -14,14 +14,14 @@ const services = [
   },
   {
     id: 2,
-    title: 'Especialistas em Banco de dados',
-    description: 'Especialistas em estruturação, otimização e gestão de bases Oracle Databese & MSSQL Server.',
+    title: 'Infraestrutura Cloud',
+    description: 'Modernize sua infraestrutura e reduza custos com soluções em nuvem escaláveis.',
     icon: <Server size={40} className="text-blue-medium" />,
   },
   {
     id: 3,
-    title: 'Desenvolvimento',
-    description: 'Criação e Personalização de Telas, APIs, Dashboards, Relatórios e Rotinas com Automação otimizadas.',
+    title: 'Desenvolvimento Web',
+    description: 'Criação de sites e aplicações web modernas, responsivas e otimizadas.',
     icon: <Code size={40} className="text-blue-medium" />,
   },
   {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Cpu, Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Compass, Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <Link to="/" className="flex items-center mb-4">
-              <Cpu size={24} className="text-white mr-2" />
+              <Compass size={24} className="text-white mr-2" />
               <span className="font-poppins font-bold text-xl">
                 <span className="text-white">Innovato</span>
                 <span className="text-orange-accent">Tecnologia</span>
@@ -51,16 +51,16 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4">Contato</h3>
             <ul className="space-y-3">
               <li className="flex items-start">
-                <MapPin size={20} className="mr-2 mt-1 flex-shrink-0" />
-                <span>Av. Tecnologia, 1000, São Paulo - SP</span>
+                <Compass size={20} className="mr-2 mt-1 flex-shrink-0" />
+                <span>CEP: 78135-902</span>
               </li>
               <li className="flex items-center">
                 <Phone size={20} className="mr-2 flex-shrink-0" />
-                <span>(11) 5555-5555</span>
+                <span>(65) 99341-9023</span>
               </li>
               <li className="flex items-center">
                 <Mail size={20} className="mr-2 flex-shrink-0" />
-                <span>contato@innovato.com.br</span>
+                <span>contato@innovatotecnologia.com.br</span>
               </li>
             </ul>
           </div>
