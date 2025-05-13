@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Compass, Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -9,15 +9,18 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <Link to="/" className="flex items-center mb-4">
-              <Compass size={24} className="text-white mr-2" />
-              <span className="font-poppins font-bold text-xl">
-                <span className="text-white">Innovato</span>
-                <span className="text-orange-accent">Tecnologia</span>
-              </span>
+              <img 
+                src="/logo.png" 
+                alt="Innovato Tecnologia" 
+                className="h-8 mr-2"
+              />
             </Link>
             <p className="text-gray-300 mb-4">
               Inovação que conecta, tecnologia que transforma. Soluções tecnológicas para empresas
               que querem alcançar o futuro.
+            </p>
+            <p className="text-gray-300">
+              CNPJ: 59.053.866/0001-03
             </p>
           </div>
 
@@ -51,12 +54,12 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4">Contato</h3>
             <ul className="space-y-3">
               <li className="flex items-start">
-                <Compass size={20} className="mr-2 mt-1 flex-shrink-0" />
-                <span>CEP: 78135-902</span>
+                <MapPin size={20} className="mr-2 mt-1 flex-shrink-0" />
+                <span>Av. Rio Grande do Norte, S/N, Centro Sul, Várzea Grande, MT - CEP 78135-902</span>
               </li>
               <li className="flex items-center">
                 <Phone size={20} className="mr-2 flex-shrink-0" />
-                <span>(65) 99341-9023</span>
+                <span>(65) 99346-1383</span>
               </li>
               <li className="flex items-center">
                 <Mail size={20} className="mr-2 flex-shrink-0" />

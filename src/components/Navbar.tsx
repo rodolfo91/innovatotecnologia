@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Menu, X, Cpu } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,11 +31,11 @@ const Navbar = () => {
     >
       <div className="container-custom flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <Cpu size={28} className="text-blue-medium mr-2" />
-          <span className="font-poppins font-bold text-xl md:text-2xl">
-            <span className="text-blue-dark">Innovato</span>
-            <span className="text-orange-accent">Tecnologia</span>
-          </span>
+          <img 
+            src="/logo.png" 
+            alt="Innovato Tecnologia" 
+            className="h-10 md:h-12"
+          />
         </Link>
 
         {/* Desktop Menu */}

@@ -19,7 +19,6 @@ const ContatoPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real implementation, you would send the form data to a server
     setIsSubmitted(true);
   };
 
@@ -149,8 +148,9 @@ const ContatoPage = () => {
                   <div>
                     <h3 className="font-bold text-gray-800">Endereço</h3>
                     <p className="text-gray-600">
-                      Av. Tecnologia, 1000<br />
-                      São Paulo, SP - CEP 01234-567
+                      Av. Rio Grande do Norte, S/N<br />
+                      Centro Sul, Várzea Grande, MT<br />
+                      CEP 78135-902
                     </p>
                   </div>
                 </div>
@@ -161,7 +161,7 @@ const ContatoPage = () => {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-800">Telefone</h3>
-                    <p className="text-gray-600">(11) 5555-5555</p>
+                    <p className="text-gray-600">(65) 99346-1383</p>
                   </div>
                 </div>
 
@@ -171,7 +171,7 @@ const ContatoPage = () => {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-800">E-mail</h3>
-                    <p className="text-gray-600">contato@innovato.com.br</p>
+                    <p className="text-gray-600">contato@innovatotecnologia.com.br</p>
                   </div>
                 </div>
               </div>
@@ -212,7 +212,7 @@ const ContatoPage = () => {
 
             <div className="bg-white rounded-lg shadow-md overflow-hidden h-80">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1061183326366!2d-46.65333699999999!3d-23.563200299999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1660922624446!5m2!1spt-BR!2sbr"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3842.8076171562347!2d-56.13249699999999!3d-15.647499999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x939db1e179e0b6ef%3A0x3cb9b3d169c6b031!2sAv.%20Rio%20Grande%20do%20Norte%2C%20V%C3%A1rzea%20Grande%20-%20MT!5e0!3m2!1spt-BR!2sbr!4v1660922624446!5m2!1spt-BR!2sbr"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
