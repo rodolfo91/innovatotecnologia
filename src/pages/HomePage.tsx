@@ -1,46 +1,92 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, BarChart2, Database, Code, Globe, Server, Shield, Star } from 'lucide-react';
+import { ChevronRight, Database, Code, Globe, Server, Shield, Laptop, FileSpreadsheet, CreditCard, FolderGit, MonitorSmartphone } from 'lucide-react';
 import HeroSection from '../components/home/HeroSection';
 import ServiceCard from '../components/home/ServiceCard';
+import PricingCard from '../components/home/PricingCard';
 import TestimonialCarousel from '../components/home/TestimonialCarousel';
 
 const services = [
   {
     id: 1,
-    title: 'Consultoria em TI',
-    description: 'Orientação e planejamento estratégico para alinhar tecnologia com objetivos de negócio.',
-    icon: <BarChart2 size={40} className="text-blue-medium" />,
+    title: 'Consultoria e Suporte ERP Sankhya',
+    description: 'Mapeamento de processos, suporte especializado em módulos (Compras, Vendas, Financeiro, Fiscal, Estoque, Serviços, Projetos, WMS e Produção), atendimento remoto com SLA e acompanhamento funcional contínuo.',
+    icon: <Laptop size={40} className="text-blue-medium" />,
   },
   {
     id: 2,
-    title: 'Infraestrutura Cloud',
-    description: 'Modernize sua infraestrutura e reduza custos com soluções em nuvem escaláveis.',
-    icon: <Server size={40} className="text-blue-medium" />,
-  },
-  {
-    id: 3,
-    title: 'Desenvolvimento Web',
-    description: 'Criação de sites e aplicações web modernas, responsivas e otimizadas.',
+    title: 'Desenvolvimento Sankhya',
+    description: 'Criação e ajuste de rotinas (Java, JavaScript, SQL), campos e telas personalizadas, integrações com APIs externas e automação de processos.',
     icon: <Code size={40} className="text-blue-medium" />,
   },
   {
+    id: 3,
+    title: 'Relatórios e Dashboards',
+    description: 'Relatórios personalizados, visões gerenciais estratégicas, dashboards em Power BI integrados ao Sankhya e indicadores de desempenho por área.',
+    icon: <FileSpreadsheet size={40} className="text-blue-medium" />,
+  },
+  {
     id: 4,
-    title: 'Transformação Digital',
-    description: 'Implementação de processos e tecnologias para impulsionar a inovação nos negócios.',
-    icon: <Globe size={40} className="text-blue-medium" />,
+    title: 'Integrações e TEF',
+    description: 'Implantação de TEF, integração com ERP e adquirentes, redução de custos operacionais e suporte especializado em transações eletrônicas.',
+    icon: <CreditCard size={40} className="text-blue-medium" />,
   },
   {
     id: 5,
-    title: 'Gestão de Dados',
-    description: 'Estratégias para coleta, armazenamento e análise de dados corporativos.',
+    title: 'Banco de Dados e Infraestrutura',
+    description: 'Otimização de performance, backup e migração, instalação Sankhya OM e monitoramento de segurança de dados.',
     icon: <Database size={40} className="text-blue-medium" />,
   },
   {
     id: 6,
-    title: 'Segurança da Informação',
-    description: 'Proteção de ativos digitais contra ameaças com soluções de segurança avançadas.',
-    icon: <Shield size={40} className="text-blue-medium" />,
+    title: 'Migração de Dados',
+    description: 'Tratamento e unificação de cadastros, remoção de duplicidades, correções estruturais e apoio na transição de sistemas legados.',
+    icon: <FolderGit size={40} className="text-blue-medium" />,
+  },
+  {
+    id: 7,
+    title: 'Sites e Identidade Digital',
+    description: 'Criação de sites profissionais, edição visual corporativa e integração com sistemas de atendimento e automação.',
+    icon: <MonitorSmartphone size={40} className="text-blue-medium" />,
+  },
+];
+
+const plans = [
+  {
+    title: 'Essencial',
+    price: 'R$ 997',
+    features: [
+      'Até 8 horas mensais de atendimento',
+      'Suporte via chat e e-mail',
+      'SLA de 24 horas úteis',
+      'Acesso a base de conhecimento',
+    ],
+  },
+  {
+    title: 'Profissional',
+    price: 'R$ 1.997',
+    features: [
+      'Até 20 horas mensais de atendimento',
+      'Suporte via chat, e-mail e telefone',
+      'SLA de 8 horas úteis',
+      'Acesso a base de conhecimento',
+      'Consultoria mensal preventiva',
+      'Relatórios de utilização',
+    ],
+    isPopular: true,
+  },
+  {
+    title: 'Corporativo',
+    price: 'R$ 3.997',
+    features: [
+      'Até 40 horas mensais de atendimento',
+      'Suporte prioritário multicanal',
+      'SLA de 4 horas úteis',
+      'Acesso a base de conhecimento',
+      'Consultoria semanal preventiva',
+      'Relatórios de utilização',
+      'Gestor de conta dedicado',
+    ],
   },
 ];
 
@@ -77,18 +123,33 @@ const HomePage = () => {
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="section-title">Nossos Serviços</h2>
-            <p className="section-subtitle">Soluções inovadoras para transformar sua empresa</p>
+            <p className="section-subtitle">Soluções especializadas em ERP Sankhya e tecnologia empresarial</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service) => (
               <ServiceCard key={service.id} service={service} />
             ))}
           </div>
         </div>
       </section>
-      
+
       <section className="py-20 bg-white">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="section-title">Planos de Atendimento</h2>
+            <p className="section-subtitle">Escolha o plano ideal para sua empresa</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {plans.map((plan, index) => (
+              <PricingCard key={index} plan={plan} />
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      <section className="py-20 bg-gray-50">
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="section-title">O Que Nossos Clientes Dizem</h2>
