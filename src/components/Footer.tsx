@@ -12,7 +12,8 @@ const Footer = () => {
               <img 
                 src="/logo.png" 
                 alt="Innovato Tecnologia" 
-                className="h-8 mr-2"
+                className="h-8"
+                style={{ maxWidth: '200px', height: 'auto' }}
               />
             </Link>
             <p className="text-gray-300 mb-4">

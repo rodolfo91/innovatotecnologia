@@ -34,7 +34,8 @@ const Navbar = () => {
           <img 
             src="/logo.png" 
             alt="Innovato Tecnologia" 
-            className="h-10 md:h-12"
+            className="h-8 md:h-10"
+            style={{ maxWidth: '300px', height: 'auto' }}
           />
         </Link>
 
