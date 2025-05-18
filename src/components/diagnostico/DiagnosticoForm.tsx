@@ -51,6 +51,33 @@ const DiagnosticoForm: React.FC<DiagnosticoFormProps> = ({ onSubmit }) => {
     window.scrollTo(0, 0);
   };
 
+  const sendWhatsAppNotification = async (data: FormData, mediaGeral: number) => {
+    const message = `📋 *Novo Diagnóstico Recebido*
+
+👤 *Responsável:* ${data.responsavel}
+📱 *Telefone:* ${data.telefone}
+🏢 *Empresa:* ${data.empresa}
+
+🔍 *Avaliação por Setor:*
+- Estratégia: ${data.estrategia}/5
+- Operações: ${data.operacoes}/5
+- Finanças: ${data.financas}/5
+- Marketing: ${data.marketing}/5
+- RH: ${data.rh}/5
+- Tecnologia: ${data.tecnologia}/5
+
+📊 *Média Geral:* ${mediaGeral.toFixed(1)}/5
+
+💭 *Observações:*
+${data.observacao || 'Nenhuma observação fornecida'}
+
+📅 *Data:* ${new Date().toLocaleDateString('pt-BR')}`;
+
+    const whatsappNumber = '5565993461383';
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`, '_blank');
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -92,6 +119,9 @@ const DiagnosticoForm: React.FC<DiagnosticoFormProps> = ({ onSubmit }) => {
         });
 
       if (contatoError) throw contatoError;
+
+      // Send WhatsApp notification
+      await sendWhatsAppNotification(formData, mediaGeral);
 
       onSubmit();
     } catch (error) {
